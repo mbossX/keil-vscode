@@ -1,0 +1,18 @@
+{
+	"extension.name": "Keil V",
+  "extension.commands.build.title": "Keil V: Build target",
+  "extension.commands.rebuild.title": "Keil V: Rebuild target",
+  "extension.commands.download.title": "Keil V: Download to device",
+  "extension.commands.switch.title": "Keil V: Switch target",
+	"extension.statusbar.build.tips": "Build Keil Project",
+	"extension.statusbar.rebuild.tips": "Rebuild Keil Project",
+	"extension.statusbar.download.tips": "Download HEX to Board",
+	"extension.statusbar.switch.tips": "Switch Keil Project Target",
+  "extension.text.switch.placeholder": "Please select a target name for keil project",
+  "extension.text.explorer.open": "Open project: '${path}' failed.",
+  "extension.text.explorer.busy": "Task is running, plase wait.",
+  "extension.text.task.noproject": "No project and target active.",
+  "extension.text.task.notarget": "Target is not belong to project.",
+	"extension.settings.mdk": "MDK uVersion exe path",
+	"extension.settings.c51": "C51 uVersion exe path"
+}

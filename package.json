@@ -1,310 +1,171 @@
 {
-    "name": "keil-assistant",
-    "displayName": "Keil Assistant",
-    "description": "An assistant for Keil uVision",
-    "version": "1.7.0",
-    "publisher": "cl",
-    "author": {
-        "name": "cl",
-        "email": "2584456014@qq.com"
+  "name": "keil-vscode",
+  "displayName": "Keil V",
+  "description": "An assistant for Keil uVision 5",
+  "version": "0.0.2",
+  "publisher": "jiyun-tech",
+  "author": {
+    "name": "www.jiyun.tech",
+    "email": "mboss0@163.com"
+  },
+  "keywords": [
+    "keil",
+    "mdk",
+    "stm32"
+  ],
+  "homepage": "https://github.com/mbossX/keil-vscode",
+  "engines": {
+    "vscode": "^1.63.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "icon": "res/icon.png",
+  "main": "./dist/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mbossX/keil-vscode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mbossX/keil-vscode/issues",
+    "email": "mboss0@163.com"
+  },
+  "contributes": {
+    "icons": {
+      "keil-v-build": {
+        "description": "build icon",
+        "default": {
+          "fontPath": "./res/iconfont.woff",
+          "fontCharacter": "\\e615"
+        }
+      },
+      "keil-v-rebuild": {
+        "description": "rebuild icon",
+        "default": {
+          "fontPath": "./res/iconfont.woff",
+          "fontCharacter": "\\e616"
+        }
+      },
+      "keil-v-download": {
+        "description": "download icon",
+        "default": {
+          "fontPath": "./res/iconfont.woff",
+          "fontCharacter": "\\e618"
+        }
+      },
+      "keil-v-switch": {
+        "description": "switch icon",
+        "default": {
+          "fontPath": "./res/iconfont.woff",
+          "fontCharacter": "\\e617"
+        }
+      }
     },
-    "keywords": [
-        "keil",
-        "mdk",
-        "c51",
-        "8051",
-        "stm32"
+    "configuration": [
+      {
+        "title": "%extension.name%",
+        "properties": {
+          "keil-vscode.MDK.Uv4Path": {
+            "type": "string",
+            "scope": "machine",
+            "markdownDescription": "%extension.settings.mdk%",
+            "default": "null"
+          },
+          "keil-vscode.C51.Uv4Path": {
+            "type": "string",
+            "scope": "machine",
+            "markdownDescription": "%extension.settings.c51%",
+            "default": "null"
+          }
+        }
+      }
     ],
-    "homepage": "https://github.com/github0null/keil-assistant",
-    "engines": {
-        "vscode": "^1.38.0"
-    },
-    "categories": [
-        "Programming Languages",
-        "Snippets",
-        "Other"
+    "commands": [
+      {
+        "command": "keil-vscode.project.build",
+        "title": "%extension.commands.build.title%"
+      },
+      {
+        "command": "keil-vscode.project.rebuild",
+        "title": "%extension.commands.rebuild.title%"
+      },
+      {
+        "command": "keil-vscode.project.download",
+        "title": "%extension.commands.download.title%"
+      },
+      {
+        "command": "keil-vscode.project.switch",
+        "title": "%extension.commands.switch.title%"
+      }
     ],
-    "activationEvents": [
-        "*"
-    ],
-    "icon": "res/icons/icon.png",
-    "main": "./dist/extension.js",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/github0null/keil-assistant.git"
-    },
-    "bugs": {
-        "url": "https://github.com/github0null/keil-assistant/issues",
-        "email": "2584456014@qq.com"
-    },
-    "contributes": {
-        "configuration": [
-            {
-                "title": "Keil Assistant",
-                "properties": {
-                    "KeilAssistant.C51.Uv4Path": {
-                        "type": "string",
-                        "scope": "machine",
-                        "markdownDescription": "C51 UV4.exe path",
-                        "default": "null"
-                    },
-                    "KeilAssistant.MDK.Uv4Path": {
-                        "type": "string",
-                        "scope": "machine",
-                        "markdownDescription": "MDK UV4.exe path",
-                        "default": "null"
-                    },
-                    "KeilAssistant.Project.ExcludeList": {
-                        "type": "array",
-                        "scope": "resource",
-                        "markdownDescription": "uVision project file name exclude list",
-                        "default": [
-                            "template.uvproj",
-                            "template.uvprojx"
-                        ]
-                    },
-                    "KeilAssistant.Project.FileLocationList": {
-                        "type": "array",
-                        "scope": "resource",
-                        "markdownDescription": "uVision project file locations",
-                        "default": []
-                    }
-                }
-            }
-        ],
-        "commands": [
-            {
-                "command": "explorer.open",
-                "title": "Open keil uVision project",
-                "icon": {
-                    "light": "./res/icons/ClassAdded_16x.svg",
-                    "dark": "./res/icons/ClassAdded_16x.svg"
-                }
-            },
-            {
-                "command": "project.switch",
-                "title": "Switch Target",
-                "icon": {
-                    "light": "./res/icons/SwitchSourceOrTarget_16x.svg",
-                    "dark": "./res/icons/SwitchSourceOrTarget_16x.svg"
-                }
-            },
-            {
-                "command": "project.active",
-                "title": "Active Project"
-            },
-            {
-                "command": "project.close",
-                "title": "Close Project",
-                "icon": {
-                    "light": "./res/icons/StatusOffline_16x.svg",
-                    "dark": "./res/icons/StatusOffline_16x.svg"
-                }
-            },
-            {
-                "command": "project.build",
-                "title": "Build",
-                "icon": {
-                    "light": "./res/icons/BuildSelection_16x.svg",
-                    "dark": "./res/icons/BuildSelection_16x.svg"
-                }
-            },
-            {
-                "command": "project.rebuild",
-                "title": "Rebuild",
-                "icon": {
-                    "light": "./res/icons/BuildSolution_16x.svg",
-                    "dark": "./res/icons/BuildSolution_16x.svg"
-                }
-            },
-            {
-                "command": "project.download",
-                "title": "Download To Device",
-                "icon": {
-                    "light": "./res/icons/TransferDownload_16x.svg",
-                    "dark": "./res/icons/TransferDownload_16x.svg"
-                }
-            },
-            {
-                "command": "item.copyValue",
-                "title": "Copy Item Value",
-                "icon": {
-                    "light": "./res/icons/CopyToClipboard_16x.svg",
-                    "dark": "./res/icons/CopyToClipboard_16x.svg"
-                }
-            }
-        ],
-        "menus": {
-            "view/title": [
-                {
-                    "command": "explorer.open",
-                    "group": "navigation",
-                    "when": "view == project"
-                }
-            ],
-            "view/item/context": [
-                {
-                    "command": "project.close",
-                    "when": "viewItem == Project"
-                },
-                {
-                    "command": "project.active",
-                    "when": "viewItem == Project"
-                },
-                {
-                    "command": "project.switch",
-                    "group": "inline",
-                    "when": "viewItem == Project"
-                },
-                {
-                    "command": "project.build",
-                    "group": "inline",
-                    "when": "viewItem == Target"
-                },
-                {
-                    "command": "project.rebuild",
-                    "group": "inline",
-                    "when": "viewItem == Target"
-                },
-                {
-                    "command": "project.download",
-                    "group": "inline",
-                    "when": "viewItem == Target"
-                },
-                {
-                    "command": "item.copyValue",
-                    "group": "inline",
-                    "when": "viewItem == Source"
-                }
-            ]
-        },
-        "keybindings": [
-            {
-                "command": "project.build",
-                "key": "f7"
-            },
-            {
-                "command": "project.rebuild",
-                "key": "ctrl+alt+f7"
-            },
-            {
-                "command": "project.download",
-                "key": "ctrl+alt+d"
-            }
-        ],
-        "snippets": [
-            {
-                "language": "a51",
-                "path": "./syntaxes/a51.snippets.json"
-            }
-        ],
-        "languages": [
-            {
-                "id": "a51",
-                "aliases": [
-                    "A51",
-                    "8051 Assembly"
-                ],
-                "extensions": [
-                    ".a51",
-                    ".A51"
-                ],
-                "filenamePatterns": [
-                    "**/*.a51",
-                    "**/*.A51"
-                ],
-                "configuration": "./syntaxes/a51.language-configuration.json"
-            }
-        ],
-        "grammars": [
-            {
-                "language": "a51",
-                "scopeName": "source.asm.a51",
-                "path": "./syntaxes/a51.tmLanguage.json"
-            }
-        ],
-        "views": {
-            "explorer": [
-                {
-                    "id": "project",
-                    "name": "Keil uVision Project"
-                }
-            ]
-        },
-        "taskDefinitions": [
-            {
-                "type": "keil-task"
-            }
-        ],
-        "problemMatchers": [
-            {
-                "name": "c51",
-                "fileLocation": "autoDetect",
-                "pattern": [
-                    {
-                        "regexp": "^([^\\(]+)\\(([\\d]+)\\):\\s+(error|warning)\\s+([A-Z0-9]+):\\s+(.+)$",
-                        "file": 1,
-                        "location": 2,
-                        "severity": 3,
-                        "code": 4,
-                        "message": 5
-                    }
-                ]
-            },
-            {
-                "name": "armcc",
-                "fileLocation": "autoDetect",
-                "pattern": [
-                    {
-                        "regexp": "^([^\\(]+)\\(([\\d]+)\\):\\s+(error|warning):\\s+#([\\d\\w-]+):\\s+(.+)$",
-                        "file": 1,
-                        "location": 2,
-                        "severity": 3,
-                        "code": 4,
-                        "message": 5
-                    }
-                ]
-            },
-            {
-                "name": "gcc",
-                "fileLocation": "autoDetect",
-                "pattern": [
-                    {
-                        "regexp": "^(.+):(\\d+):(\\d+):\\s+(\\w+):\\s+(.*)$",
-                        "file": 1,
-                        "line": 2,
-                        "column": 3,
-                        "severity": 4,
-                        "message": 5
-                    }
-                ]
-            }
+    "problemMatchers": [
+      {
+        "name": "armcc",
+        "fileLocation": "autoDetect",
+        "pattern": [
+          {
+            "regexp": "^([^\\(]+)\\(([\\d]+)\\):\\s+(error|warning):\\s+#([\\d\\w-]+):\\s+(.+)$",
+            "file": 1,
+            "location": 2,
+            "severity": 3,
+            "code": 4,
+            "message": 5
+          }
         ]
-    },
-    "scripts": {
-        "vscode:prepublish": "webpack --mode production",
-        "webpack": "webpack --mode development",
-        "pretest": "npm run compile",
-        "test": "node ./out/test/runTest.js"
-    },
-    "devDependencies": {
-        "@types/glob": "^7.1.1",
-        "@types/mocha": "^5.2.7",
-        "@types/node": "^12.11.7",
-        "@types/vscode": "^1.38.0",
-        "@types/xml2js": "^0.4.5",
-        "glob": "^7.1.5",
-        "mocha": "^6.2.2",
-        "ts-loader": "^7.0.5",
-        "tslint": "^5.20.0",
-        "typescript": "^3.6.4",
-        "vscode-test": "^1.2.2",
-        "webpack": "^4.43.0",
-        "webpack-cli": "^3.3.11"
-    },
-    "dependencies": {
-        "@types/vscode": "^1.38.0",
-        "vscode-variables": "^0.1.3",
-        "xml2js": "^0.4.23"
-    }
+      },
+      {
+        "name": "gcc",
+        "fileLocation": "autoDetect",
+        "pattern": [
+          {
+            "regexp": "^(.+):(\\d+):(\\d+):\\s+(\\w+):\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "severity": 4,
+            "message": 5
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "login": "vsce login jiyun-tech i6b7aetlizyjsk37zhbt7y3cpuoqyjlrua7iqsvomppliqc7ukna",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.4",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "14.x",
+    "@types/vscode": "^1.63.0",
+    "@types/xml2js": "^0.4.5",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^3.10.1",
+    "@vscode/test-electron": "^1.6.2",
+    "eslint": "^8.1.0",
+    "glob": "^7.1.7",
+    "mocha": "^6.2.3",
+    "ts-loader": "^9.2.5",
+    "typescript": "^4.4.4",
+    "vsce": "2.9.3",
+    "webpack": "^5.52.1",
+    "webpack-cli": "^4.8.0",
+    "xml2js": "^0.4.23"
+  },
+  "dependencies": {
+  }
 }

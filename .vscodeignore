@@ -2,13 +2,15 @@
 .vscode-test/**
 src/test/**
 src/**
+node_modules/**
 vsc-extension-quickstart.md
-**/tsconfig.json
-**/tslint.json
+tsconfig.json
 **/*.map
 **/*.ts
 **/src/test
 *.code-workspace
 .gitignore
+.eslintrc.json
 out
 *.js
+package-lock.json

@@ -1,0 +1,18 @@
+{
+	"extension.name": "Keil V",
+  "extension.commands.build.title": "Keil V: 构建目标",
+  "extension.commands.rebuild.title": "Keil V: 重新构建目标",
+  "extension.commands.download.title": "Keil V: 下载程序",
+  "extension.commands.switch.title": "Keil V: 切换项目目标",
+	"extension.statusbar.build.tips": "构建目标",
+	"extension.statusbar.rebuild.tips": "重新构建目标",
+	"extension.statusbar.download.tips": "下载程序",
+	"extension.statusbar.switch.tips": "切换项目目标",
+  "extension.text.switch.placeholder": "请选择要切换的项目及目标",
+  "extension.text.explorer.open": "打开项目: '${path}' 失败.",
+  "extension.text.explorer.busy": "任务正在执行，请稍后再试.",
+  "extension.text.task.noproject": "没有选择项目.",
+  "extension.text.task.notarget": "无构建目标或目标与项目不匹配.",
+	"extension.settings.mdk": "MDK 可执行文件路径",
+	"extension.settings.c51": "C51 可执行文件路径"
+}
