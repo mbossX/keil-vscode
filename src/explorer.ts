@@ -116,22 +116,29 @@ export default class Explorer extends EventEmitter {
     }
 
     writeFileSync(this.currentProject!.logPath, '');
-    const command = `"${this.currentTarget.exe}" -${type} "${this.currentProject.projectPath}" -j0 -t ${this.currentTarget.label} -o "${this.currentProject.logPath}"`;
+    let command = `"${this.currentTarget.exe}" -${type} "${this.currentProject.projectPath}" -j0 -t ${this.currentTarget.label} -o "${this.currentProject.logPath}"`;
+    if (process.platform === 'win32') {
+      // window 使用 powershell 执行
+      command = `powershell.exe -Command "& '${this.currentTarget.exe}' -${type} '${this.currentProject.projectPath}' -j0 -t '${this.currentTarget.label}' -o '${this.currentProject.logPath}'"`;
+    }
+    this.channel.appendLine(command);
     this.channel.show();
     this.channel.appendLine('$: ' + name + ' target ' + this.currentProject.label);
 
-    let dots = 0;
-    const timer = setInterval(() => {
-      this.channel.replace(`${'$: ' + name + ' target ' + this.currentProject?.label}${new Array(Math.floor(++dots / 3) % 4 + 1).fill('.').join('')}\n${readFileSync(this.currentProject!.logPath, 'utf-8')}`);
-    }, 200);
-
-    return new Promise<void>(res => {
+    return new Promise<void>((resolve, reject) => {
       setTimeout(() => {
-        exec(command).once('exit', () => {
-          setTimeout(() => clearInterval(timer), 100);
-          res();
+        exec(command, (error, stdout, stderr) => {
+          if (error) {
+            reject(error);
+          } else {
+            this.channel.appendLine(`exec finish`);
+            this.channel.appendLine(`stdout: ${stdout}`);
+            this.channel.appendLine(`stderr: ${stderr}`);
+            resolve();
+          }
         });
       }, 500);
-    });
+    })
+
   }
 }
